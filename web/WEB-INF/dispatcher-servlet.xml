@@ -29,6 +29,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.mrak.sheduleclinic.model.Doctor</value>
+                <value>com.mrak.sheduleclinic.model.Shedule</value>
             </list>
         </property>
         <property name="hibernateProperties">

@@ -51,18 +51,16 @@
     <table class="tg">
         <tr>
             <th width="80">ID</th>
-            <th width="120">Name</th>
-            <th width="120">Surname</th>
-            <th width="120">Patronymic</th>
-            <th width="120">Position</th>
+            <th width="120">ФИО</th>
+            <th width="120">Должность</th>
+            <%--<th width="120">Patronymic</th>--%>
         </tr>
         <c:forEach items="${listDoctors}" var="doctor">
             <tr>
                 <td>${doctor.id}</td>
-                <td>${doctor.name}</td>
-                <td>${doctor.surname}</td>
-                <td>${doctor.patronymic}</td>
+                <td>${doctor.surname} ${doctor.name} ${doctor.patronymic}</td>
                 <td>${doctor.position}</td>
+                <%--<td>${doctor.patronymic}</td>--%>
             </tr>
         </c:forEach>
     </table>
