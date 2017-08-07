@@ -1,26 +1,38 @@
 package com.mrak.sheduleclinic.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Doctor")
 public class Doctor {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctor")
+    private Set<Shedule> shedules = new HashSet<Shedule>();
+
+    public Doctor() {
+    }
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "name")
     private String name;
-
     @Column
     private String surname;
-
     @Column
     private String patronymic;
-
     @Column
     private String position;
+
+    public Set<Shedule> getShedules() {
+        return this.shedules;
+    }
+
+    public void setShedules(Set<Shedule> shedules) {
+        this.shedules = shedules;
+    }
 
     public int getId() {
         return id;

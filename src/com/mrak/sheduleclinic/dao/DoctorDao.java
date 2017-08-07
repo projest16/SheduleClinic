@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DoctorDao {
     public List<Doctor> listDoctors();
+    public Doctor getDoctorById(int id);
+    public void addDoctor(Doctor doctor);
 }

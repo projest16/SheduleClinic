@@ -30,6 +30,7 @@
             <list>
                 <value>com.mrak.sheduleclinic.model.Doctor</value>
                 <value>com.mrak.sheduleclinic.model.Shedule</value>
+                <value>com.mrak.sheduleclinic.model.Patient</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -49,6 +50,14 @@
 
     <bean id="doctorService" class="com.mrak.sheduleclinic.service.DoctorServiceImpl">
         <property name="doctorDao" ref="doctorDao"/>
+    </bean>
+
+    <bean id="sheduleDao" class="com.mrak.sheduleclinic.dao.SheduleDaoImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="sheduleService" class="com.mrak.sheduleclinic.service.SheduleServiceImpl">
+        <property name="sheduleDao" ref="sheduleDao"/>
     </bean>
 
     <!--Остальное-->

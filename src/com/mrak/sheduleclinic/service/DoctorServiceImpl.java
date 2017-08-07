@@ -17,4 +17,16 @@ public class DoctorServiceImpl implements DoctorService{
     public List<Doctor> listDoctors() {
         return this.doctorDao.listDoctors();
     }
+
+    @Override
+    @Transactional
+    public Doctor getDoctorById(int id) {
+        return this.doctorDao.getDoctorById(id);
+    }
+
+    @Override
+    @Transactional
+    public void addBook(Doctor doctor) {
+        this.doctorDao.addDoctor(doctor);
+    }
 }

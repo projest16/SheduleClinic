@@ -16,13 +16,39 @@ public class Shedule {
     @Column
     private int duration;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
     @Override
     public String toString() {
         return "Shedule{" +
                 "id=" + id +
                 ", time=" + time +
                 ", duration=" + duration +
+                ", doctor=" + doctor +
+                ", patient=" + patient +
                 '}';
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Doctor getDoctor() {
+        return this.doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public int getId() {
