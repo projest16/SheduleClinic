@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: d.tarasov
@@ -10,11 +12,12 @@
 <html>
 <head>
     <title>Расписание</title>
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <h1></h1>
 <tr>
-    <td>${doctor.surname} ${doctor.name} ${doctor.patronymic}</td>
+    <td><div class="h1">${doctor.surname} ${doctor.name} ${doctor.patronymic}</div></td>
 </tr>
 
 <%--<c:if test="${!empty listShedule}">--%>
@@ -29,16 +32,47 @@
         </tr>
         <c:forEach items="${listShedule}" var="shedule">
             <tr>
-                <td>${shedule.id}</td>
-                <td>${shedule.duration}</td>
-                <td>${shedule.time}</td>
-                <td>${shedule.doctor.surname}</td>
-                <td>${shedule.patient.surname}</td>
+                <td><div class="well">${shedule.id}</div></td>
+                <td><div class="well">${shedule.duration}</div></td>
+                <td><div class="well">${shedule.time}</div></td>
+                <td><div class="well">${shedule.doctor.surname}</div></td>
+                <td><div class="well">${shedule.patient.surname}</div></td>
                 <%--<td>${shedule.doctor_id}</td>--%>
                     <%--<td>${doctor.patronymic}</td>--%>
             </tr>
         </c:forEach>
     </table>
+
+<h1>Add a Shedule</h1>
+<c:url var="addAction" value="/add"/>
+
+<form:form action="${addAction}" commandName="shedule">
+    <table>
+        <tr>
+            <td>
+                <form:label path="duration">
+                    <spring:message text="duration"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="duration"/>
+            </td>
+            <%--<td>--%>
+                <%--<form:label path="time">--%>
+                    <%--<spring:message text="time"/>--%>
+                <%--</form:label>--%>
+            <%--</td>--%>
+            <%--<td>--%>
+                <%--<form:input path="time"/>--%>
+            <%--</td>--%>
+        </tr>
+        <td colspan="2">
+            <input type="submit"
+                   value="<spring:message text="Add Shedule"/>"/>
+        </td>
+        </tr>
+    </table>
+</form:form>
 <%--</c:if>--%>
 
 </body>

@@ -26,7 +26,7 @@ public class DoctorServiceImpl implements DoctorService{
 
     @Override
     @Transactional
-    public void addBook(Doctor doctor) {
+    public void addDoctor(Doctor doctor) {
         this.doctorDao.addDoctor(doctor);
     }
 }

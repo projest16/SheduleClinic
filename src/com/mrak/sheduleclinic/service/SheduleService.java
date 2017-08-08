@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface SheduleService {
     public List<Shedule> listShedule(int doctor_id);
+    public void addShedule(Shedule shedule);
 }

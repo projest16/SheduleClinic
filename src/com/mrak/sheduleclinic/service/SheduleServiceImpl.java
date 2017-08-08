@@ -20,4 +20,10 @@ public class SheduleServiceImpl implements SheduleService {
     public List<Shedule> listShedule(int doctor_id) {
         return this.sheduleDao.listShedule(doctor_id);
     }
+
+    @Transactional
+    @Override
+    public void addShedule(Shedule shedule) {
+        this.sheduleDao.addShedule(shedule);
+    }
 }

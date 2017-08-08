@@ -22,4 +22,10 @@ public class SheduleDaoImpl implements SheduleDao{
         List<Shedule> sheduleList = query.list();
         return sheduleList;
     }
+
+    @Override
+    public void addShedule(Shedule shedule) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(shedule);
+    }
 }

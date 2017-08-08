@@ -45,6 +45,7 @@
             background-color: #f9f9f9
         }
     </style>
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <h1>Doctor List</h1>
@@ -82,6 +83,14 @@
             </td>
             <td>
                 <form:input path="surname"/>
+            </td>
+            <td>
+                <form:label path="position">
+                    <spring:message text="Должность"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="position"/>
             </td>
         </tr>
             <td colspan="2">
