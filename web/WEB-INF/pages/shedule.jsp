@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: d.tarasov
@@ -44,35 +46,52 @@
     </table>
 
 <h1>Add a Shedule</h1>
-<c:url var="addAction" value="/add"/>
+<c:url var="addAction" value="/shedule/${doctor.id}/add"/>
 
-<form:form action="${addAction}" commandName="shedule">
-    <table>
-        <tr>
-            <td>
-                <form:label path="duration">
-                    <spring:message text="duration"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="duration"/>
-            </td>
+<form action="/shedule/${doctor.id}/add" method="post">
+    <table >
+        <th><input type="text" name="duration" placeholder="Продолжительность" ></th>
+        <th><input type="date"  name="time" ></th>
+    </table>
+    <input type="submit"  value="Создать">
+    </div>
+</form>
+
+<%--<form:form action="${addAction}" commandName="shedule">--%>
+    <%--<table>--%>
+        <%--<tr>--%>
             <%--<td>--%>
-                <%--<form:label path="time">--%>
-                    <%--<spring:message text="time"/>--%>
+                <%--<form:label path="duration">--%>
+                    <%--<spring:message text="duration"/>--%>
                 <%--</form:label>--%>
             <%--</td>--%>
             <%--<td>--%>
-                <%--<form:input path="time"/>--%>
+                <%--<form:input path="duration"/>--%>
             <%--</td>--%>
-        </tr>
-        <td colspan="2">
-            <input type="submit"
-                   value="<spring:message text="Add Shedule"/>"/>
-        </td>
-        </tr>
-    </table>
-</form:form>
+            <%--<td>--%>
+                <%--&lt;%&ndash;<form:input type="data", path="time">&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<p>Выберите дату: <input type="date" name="calendar">&ndash;%&gt;--%>
+
+                    <%--<fmt:formatDate var='formattedDate' value='${shedule.time}' type='both' timeStyle='long' dateStyle='long' />--%>
+                    <%--<input type="text" value="${formattedDate}"/>--%>
+            <%--&lt;%&ndash;</form:input>&ndash;%&gt;--%>
+            <%--</td>--%>
+            <%--&lt;%&ndash;<td>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<form:label path="time">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<spring:message text="time"/>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;</form:label>&ndash;%&gt;--%>
+            <%--&lt;%&ndash;</td>&ndash;%&gt;--%>
+            <%--&lt;%&ndash;<td>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<form:input path="time"/>&ndash;%&gt;--%>
+            <%--&lt;%&ndash;</td>&ndash;%&gt;--%>
+        <%--</tr>--%>
+        <%--<td colspan="2">--%>
+            <%--<input type="submit"--%>
+                   <%--value="<spring:message text="Add Shedule"/>"/>--%>
+        <%--</td>--%>
+        <%--</tr>--%>
+    <%--</table>--%>
+<%--</form:form>--%>
 <%--</c:if>--%>
 
 </body>

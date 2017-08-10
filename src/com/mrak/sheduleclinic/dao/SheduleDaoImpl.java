@@ -26,6 +26,6 @@ public class SheduleDaoImpl implements SheduleDao{
     @Override
     public void addShedule(Shedule shedule) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(shedule);
+        session.save(shedule);
     }
 }

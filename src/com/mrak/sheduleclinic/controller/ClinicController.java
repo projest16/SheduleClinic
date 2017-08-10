@@ -49,12 +49,13 @@ public class ClinicController {
         return "shedule";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addShedule(@ModelAttribute("shedule") Shedule shedule) {
+    @RequestMapping(value = "/shedule/{id}/add", method = RequestMethod.POST)
+    public String addShedule(@PathVariable("id") int doctor_id, @ModelAttribute("shedule") Shedule shedule) {
         //model.addAttribute("doctor", new Doctor());
 //        model.addAttribute("listShedule", this.sheduleService.listShedule(doctor_id));
 //        model.addAttribute("doctor", this.doctorService.getDoctorById(doctor_id));
         //shedule.setDoctor(this.doctorService.getDoctorById(doctor_id));
+        shedule.setDoctor(this.doctorService.getDoctorById(doctor_id));
         this.sheduleService.addShedule(shedule);
         return "redirect:/";
     }
