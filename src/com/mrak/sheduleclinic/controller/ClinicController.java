@@ -7,10 +7,7 @@ import com.mrak.sheduleclinic.service.SheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ClinicController {
@@ -26,6 +23,11 @@ public class ClinicController {
     @Autowired(required = true)
     public void setSheduleService(SheduleService sheduleService) {
         this.sheduleService = sheduleService;
+    }
+
+    @RequestMapping(value = "/")
+    public String showHomePage(Model model) {
+        return "index";
     }
 
     @RequestMapping(value = "/listdoctors", method = RequestMethod.GET)
@@ -51,12 +53,21 @@ public class ClinicController {
 
     @RequestMapping(value = "/shedule/{id}/add", method = RequestMethod.POST)
     public String addShedule(@PathVariable("id") int doctor_id, @ModelAttribute("shedule") Shedule shedule) {
-        //model.addAttribute("doctor", new Doctor());
-//        model.addAttribute("listShedule", this.sheduleService.listShedule(doctor_id));
-//        model.addAttribute("doctor", this.doctorService.getDoctorById(doctor_id));
-        //shedule.setDoctor(this.doctorService.getDoctorById(doctor_id));
         shedule.setDoctor(this.doctorService.getDoctorById(doctor_id));
         this.sheduleService.addShedule(shedule);
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String adminPanel(Model model) {
+        model.addAttribute("listDoctors", this.doctorService.listDoctors());
+        model.addAttribute("shedule", new Shedule());
+        return "admin";
+    }
+
+    @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
+    public String addSheduleAtAdminPanel(@RequestParam("s") int q) {
+        //this.sheduleService.addShedule(shedule);
+        return "redirect:/admin";
     }
 }
