@@ -62,6 +62,14 @@
         <property name="sheduleDao" ref="sheduleDao"/>
     </bean>
 
+    <bean id="patientDao" class="com.mrak.sheduleclinic.dao.PatientDaoImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="patientService" class="com.mrak.sheduleclinic.service.PatientServiceImpl">
+        <property name="patientDao" ref="patientDao"/>
+    </bean>
+
     <!--Apache Tiles-->
     <!--<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>-->
 

@@ -1,23 +1,23 @@
 package com.mrak.sheduleclinic.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Doctor")
 public class Doctor {
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctor")
-    private Set<Shedule> shedules = new HashSet<Shedule>();
-
-    public Doctor() {
+    public List<Shedule> getAppointment() {
+        return appointment;
     }
 
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Shedule> appointment = new ArrayList<Shedule>();
     @Id
-    @Column(name = "ID")
+    @Column(name = "doctor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "name")
+    private int doctor_id;
+    @Column
     private String name;
     @Column
     private String surname;
@@ -25,21 +25,24 @@ public class Doctor {
     private String patronymic;
     @Column
     private String position;
-
-    public Set<Shedule> getShedules() {
-        return this.shedules;
+    public Doctor() {
     }
 
-    public void setShedules(Set<Shedule> shedules) {
-        this.shedules = shedules;
+
+//    public Set<Shedule> getShedules() {
+//        return this.shedules;
+//    }
+//
+//    public void setShedules(Set<Shedule> shedules) {
+//        this.shedules = shedules;
+//    }
+
+    public int getDoctor_id() {
+        return doctor_id;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setDoctor_id(int doctor_id) {
+        this.doctor_id = doctor_id;
     }
 
     public String getName() {
@@ -77,7 +80,7 @@ public class Doctor {
     @Override
     public String toString() {
         return "Doctor{" +
-                "id=" + id +
+                "doctor_id=" + doctor_id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", patronymic='" + patronymic + '\'' +

@@ -60,8 +60,8 @@
         </tr>
         <c:forEach items="${listDoctors}" var="doctor">
             <tr>
-                <td>${doctor.id}</td>
-                <td><a href="/shedule/${doctor.id}">${doctor.surname} ${doctor.name} ${doctor.patronymic}</a></td>
+                <td>${doctor.doctor_id}</td>
+                <td><a href="/shedule/${doctor.doctor_id}">${doctor.surname} ${doctor.name} ${doctor.patronymic}</a></td>
                 <td>${doctor.position}</td>
                 <%--<td>${doctor.patronymic}</td>--%>
             </tr>

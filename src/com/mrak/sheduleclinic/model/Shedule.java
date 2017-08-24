@@ -3,42 +3,32 @@ package com.mrak.sheduleclinic.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "Shedule")
-public class Shedule {
+public class Shedule implements Serializable {
     @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Doctor doctor;
+    @Id
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Patient patient;
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     @Column
     private Date time;
-
     @Column
     private int duration;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
+    public Doctor getDoctor() {
+        return doctor;
+    }
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
-    @Override
-    public String toString() {
-        return "Shedule{" +
-                "id=" + id +
-                ", time=" + time +
-                ", duration=" + duration +
-                ", doctor=" + doctor +
-                ", patient=" + patient +
-                '}';
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public Patient getPatient() {
@@ -49,21 +39,40 @@ public class Shedule {
         this.patient = patient;
     }
 
-    public Doctor getDoctor() {
-        return this.doctor;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+//    private Set<Doctor> doctors = new HashSet<Doctor>(0);
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "patient_id")
+//    private Patient patient;
+
+    @Override
+    public String toString() {
+        return "Shedule{" +
+                "doctor=" + doctor +
+                ", patient=" + patient +
+                ", time=" + time +
+                ", duration=" + duration +
+                '}';
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
 
-    public int getId() {
-        return id;
-    }
+//    public Patient getPatient() {
+//        return patient;
+//    }
+//
+//    public void setPatient(Patient patient) {
+//        this.patient = patient;
+//    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public Doctor getDoctor() {
+//        return this.doctor;
+//    }
+//
+//    public void setDoctor(Doctor doctor) {
+//        this.doctor = doctor;
+//    }
+
 
     public Date getTime() {
         return time;

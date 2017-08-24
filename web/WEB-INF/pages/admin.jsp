@@ -16,16 +16,24 @@
 </head>
 <body>
 <h1>Admin Panel</h1>
-<c:url var="addAction" value="/admin/add"/>
+<%--<c:url var="addAction" value="/admin/add"/>--%>
 
-<form:form action="${addAction}" method="post">
+<form:form action="/admin/add" method="post" modelAttribute="shedule">
 <tr>
     <td>Skills:</td>
-    <td><form:select path="${shedule}" items="${listDoctors}" itemLabel="surname" itemValue="id">
+    <td><form:select path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname" itemValue="doctor_id"/>
         <%--<form:option value="1">Select doctor</form:option>--%>
-        <%--<form:options items="${listDoctors}"></form:options>--%>
-        </form:select>
+        <%--<form:options items="${listDoctors}" itemLabel="surname"/>--%>
+        <%--</form:select>--%>
     </td>
+
+    <td>Skills:</td>
+    <td><form:select path="patient.patient_id" items="${listPatients}" itemLabel="surname" itemValue="patient_id"/>
+        <%--<form:option value="1">Select doctor</form:option>--%>
+        <%--<form:options items="${listPatients}" itemLabel="surname"/>--%>
+    <%--</form:select>/--%>
+    </td>
+
     <td colspan="2">
     <input type="submit"
     value="<spring:message text="Add Shedule"/>"/>
