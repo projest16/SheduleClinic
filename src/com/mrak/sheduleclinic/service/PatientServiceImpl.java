@@ -18,4 +18,10 @@ public class PatientServiceImpl implements PatientService{
     public List<Patient> listPatients() {
         return this.patientDao.listPatients();
     }
+
+    @Override
+    @Transactional
+    public void addPatient(Patient patient) {
+        this.patientDao.addPatient(patient);
+    }
 }

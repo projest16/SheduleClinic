@@ -1,6 +1,7 @@
 package com.mrak.sheduleclinic.controller;
 
 import com.mrak.sheduleclinic.model.Doctor;
+import com.mrak.sheduleclinic.model.Patient;
 import com.mrak.sheduleclinic.model.Shedule;
 import com.mrak.sheduleclinic.service.DoctorService;
 import com.mrak.sheduleclinic.service.PatientService;
@@ -48,11 +49,7 @@ public class ClinicController {
     }
 
     //
-    @RequestMapping(value = "/listdoctors/add", method = RequestMethod.POST)
-    public String addDoctor(@ModelAttribute("doctor") Doctor doctor) {
-        this.doctorService.addDoctor(doctor);
-        return "redirect:/listdoctors";
-    }
+
 
     //
 //    @RequestMapping(value = "/shedule/{id}")
@@ -74,6 +71,8 @@ public class ClinicController {
     public String adminPanel(Model model) {
         model.addAttribute("listDoctors", this.doctorService.listDoctors());
         model.addAttribute("listPatients", this.patientService.listPatients());
+        model.addAttribute("doctor", new Doctor());
+        model.addAttribute("paient", new Patient());
         model.addAttribute("shedule", new Shedule());
         return "admin";
     }
@@ -86,10 +85,21 @@ public class ClinicController {
 //        return mav;
 //    }
 
-
-    @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/addShedule", method = RequestMethod.POST)
     public String addSheduleAtAdminPanel(@ModelAttribute("shedule") Shedule shedule) {
         this.sheduleService.addShedule(shedule);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/admin/addDoctor", method = RequestMethod.POST)
+    public String addDoctorAtAdminPanel(@ModelAttribute("doctor") Doctor doctor) {
+        this.doctorService.addDoctor(doctor);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/admin/addPatient", method = RequestMethod.POST)
+    public String addDoctorAtAdminPanel(@ModelAttribute("patient") Patient patient) {
+        this.patientService.addPatient(patient);
         return "redirect:/admin";
     }
 }

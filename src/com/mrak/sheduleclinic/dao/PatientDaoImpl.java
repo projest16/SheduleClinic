@@ -20,4 +20,10 @@ public class PatientDaoImpl implements PatientDao{
         List<Patient> patientList = session.createQuery("from Patient").list();
         return patientList;
     }
+
+    @Override
+    public void addPatient(Patient patient) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(patient);
+    }
 }
