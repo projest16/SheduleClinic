@@ -7,14 +7,14 @@ import java.util.List;
 @Entity
 @Table(name = "Doctor")
 public class Doctor {
-    public List<Shedule> getAppointment() {
-        return appointment;
-    }
+//    public List<Shedule> getAppointment() {
+//        return appointment;
+//    }
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-    private List<Shedule> appointment = new ArrayList<Shedule>();
+//    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+//    private List<Shedule> appointment = new ArrayList<Shedule>();
     @Id
-    @Column(name = "doctor_id")
+    //@Column(name = "doctor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int doctor_id;
     @Column

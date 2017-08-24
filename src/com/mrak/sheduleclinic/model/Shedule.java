@@ -9,12 +9,26 @@ import java.util.Date;
 @Entity
 @Table(name = "Shedule")
 public class Shedule implements Serializable {
-    @Id
-    @ManyToOne(cascade = CascadeType.ALL)
+//    @Id
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    private Doctor doctor;
+//    @Id
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    private Patient patient;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id",
+    foreignKey = @ForeignKey(name = "DOCTOR_ID_FK"))
     private Doctor doctor;
-    @Id
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id",
+            foreignKey = @ForeignKey(name = "Patient_ID_FK"))
     private Patient patient;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int shedule_id;
+
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
@@ -22,6 +36,14 @@ public class Shedule implements Serializable {
     private Date time;
     @Column
     private int duration;
+
+    public int getShedule_id() {
+        return shedule_id;
+    }
+
+    public void setShedule_id(int shedule_id) {
+        this.shedule_id = shedule_id;
+    }
 
     public Doctor getDoctor() {
         return doctor;

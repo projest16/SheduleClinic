@@ -8,22 +8,22 @@ import java.util.List;
 @Table(name = "Patient")
 public class Patient {
     @Id
-    @Column(name = "patient_id")
+    //@Column(name = "patient_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int patient_id;
     @Column
     private String name;
 
-    public List<Shedule> getRecords() {
-        return records;
-    }
+//    public List<Shedule> getRecords() {
+//        return records;
+//    }
 
     @Column
     private String surname;
     @Column
     private String patronymic;
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    private List<Shedule> records = new ArrayList<Shedule>();
+//    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+//    private List<Shedule> records = new ArrayList<Shedule>();
 
     @Override
     public String toString() {
