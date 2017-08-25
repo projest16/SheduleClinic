@@ -23,6 +23,12 @@ public class SheduleServiceImpl implements SheduleService {
 
     @Transactional
     @Override
+    public List<Shedule> listShedules() {
+        return this.sheduleDao.listShedules();
+    }
+
+    @Transactional
+    @Override
     public void addShedule(Shedule shedule) {
         this.sheduleDao.addShedule(shedule);
     }

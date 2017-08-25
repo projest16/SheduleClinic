@@ -71,6 +71,7 @@ public class ClinicController {
     public String adminPanel(Model model) {
         model.addAttribute("listDoctors", this.doctorService.listDoctors());
         model.addAttribute("listPatients", this.patientService.listPatients());
+        model.addAttribute("listShedules", this.sheduleService.listShedules());
         model.addAttribute("doctor", new Doctor());
         model.addAttribute("paient", new Patient());
         model.addAttribute("shedule", new Shedule());

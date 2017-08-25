@@ -24,6 +24,13 @@ public class SheduleDaoImpl implements SheduleDao{
     }
 
     @Override
+    public List<Shedule> listShedules() {
+        Session session = this.sessionFactory.getCurrentSession();
+        List<Shedule> sheduleList = session.createQuery("from Shedule").list();
+        return sheduleList;
+    }
+
+    @Override
     public void addShedule(Shedule shedule) {
         Session session = this.sessionFactory.getCurrentSession();
         session.save(shedule);

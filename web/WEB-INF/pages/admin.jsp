@@ -50,10 +50,32 @@
         .tg .tg-4eph {
             background-color: #f9f9f9
         }
+
+        .block1{
+            width: 700px;
+            background: #fc0;
+            padding: 5px;
+            border: solid 1px black;
+            float: left;
+            position: relative;
+            top: 40px;
+            left: 70px;
+        }
+
+        .block2{
+            width: 300px;
+            background: #fc0;
+            padding: 5px;
+            border: solid 1px black;
+            float: left;
+            position: relative;
+            top: 40px;
+            left: 70px;
+        }
     </style>
 </head>
-<body>
 <h1>Admin Panel</h1>
+<div class="block1">
 <h2>Add a Shedule</h2>
 <%--<c:url var="addAction" value="/admin/add"/>--%>
 
@@ -179,6 +201,28 @@
             </tr>
         </c:forEach>
     </table>
+</div>
 <%--</c:if>--%>
+
+<div align="right" class="block2">
+<h2>Shedule List</h2>
+
+<%--<c:if test="${!empty listPatients}">--%>
+<table class="tg" align="right">
+    <tr>
+        <th width="80">ID</th>
+        <th width="120">ФИО Доктора</th>
+        <th width="120">ФИО Пациента</th>
+        <%--<th width="120">Patronymic</th>--%>
+    </tr>
+    <c:forEach items="${listShedules}" var="shedule">
+        <tr>
+            <td>${shedule.shedule_id}</td>
+            <td>${shedule.doctor.surname}</td>
+            <td>${shedule.patient.surname}</td>
+        </tr>
+    </c:forEach>
+</table>
+</div>
 </body>
 </html>

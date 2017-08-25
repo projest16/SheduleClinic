@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface SheduleDao {
     public List<Shedule> listShedule(int doctor_id);
+    public List<Shedule> listShedules();
     public void addShedule(Shedule shedule);
 }
