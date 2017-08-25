@@ -95,6 +95,9 @@
         <%--<form:options items="${listPatients}" itemLabel="surname"/>--%>
     <%--</form:select>/--%>
     </td>
+    <td><input type="text" name="duration" placeholder="Продолжительность" ></td>
+    <td><input type="date"  name="date" ></td>
+    <td><input type="time"  name="time" ></td>
 </tr>
     <td colspan="2">
     <input type="submit"
@@ -213,6 +216,8 @@
         <th width="80">ID</th>
         <th width="120">ФИО Доктора</th>
         <th width="120">ФИО Пациента</th>
+        <th width="120">Дата</th>
+        <th width="120">Время</th>
         <%--<th width="120">Patronymic</th>--%>
     </tr>
     <c:forEach items="${listShedules}" var="shedule">
@@ -220,6 +225,8 @@
             <td>${shedule.shedule_id}</td>
             <td>${shedule.doctor.surname}</td>
             <td>${shedule.patient.surname}</td>
+            <td>${shedule.date}</td>
+            <td>${shedule.time}</td>
         </tr>
     </c:forEach>
 </table>

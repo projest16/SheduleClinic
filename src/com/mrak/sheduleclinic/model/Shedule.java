@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Shedule")
 public class Shedule implements Serializable {
-//    @Id
+    //    @Id
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    private Doctor doctor;
 //    @Id
@@ -17,25 +17,42 @@ public class Shedule implements Serializable {
 //    private Patient patient;
     @ManyToOne
     @JoinColumn(name = "doctor_id",
-    foreignKey = @ForeignKey(name = "DOCTOR_ID_FK"))
+            foreignKey = @ForeignKey(name = "DOCTOR_ID_FK"))
     private Doctor doctor;
 
     @ManyToOne
     @JoinColumn(name = "patient_id",
-            foreignKey = @ForeignKey(name = "Patient_ID_FK"))
+            foreignKey = @ForeignKey(name = "PATIENT_ID_FK"))
     private Patient patient;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int shedule_id;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@DateTimeFormat(pattern = "dd--MM-yyyy")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    @Column
+    private Date date;
+    @Temporal(TemporalType.TIME)
+    @DateTimeFormat(pattern = "HH:mm")
     //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     @Column
     private Date time;
     @Column
-    private int duration;
+    private String duration;
+
+    public Date getTime() {
+        return time;
+    }
+
+    public Shedule() {
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
 
     public int getShedule_id() {
         return shedule_id;
@@ -73,7 +90,7 @@ public class Shedule implements Serializable {
         return "Shedule{" +
                 "doctor=" + doctor +
                 ", patient=" + patient +
-                ", time=" + time +
+                ", time=" + date +
                 ", duration=" + duration +
                 '}';
     }
@@ -96,19 +113,19 @@ public class Shedule implements Serializable {
 //    }
 
 
-    public Date getTime() {
-        return time;
+    public Date getDate() {
+        return date;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setDate(Date time) {
+        this.date = time;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 }
