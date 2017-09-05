@@ -20,19 +20,6 @@ public class Shedule implements Serializable {
             foreignKey = @ForeignKey(name = "DOCTOR_ID_FK"))
     private Doctor doctor;
 
-    @Override
-    public String toString() {
-        return "Shedule{" +
-                "doctor=" + doctor +
-                ", patient=" + patient +
-                ", shedule_id=" + shedule_id +
-                ", date=" + date +
-                ", time=" + time +
-                ", start=" + start +
-                ", duration='" + duration + '\'' +
-                '}';
-    }
-
     @ManyToOne
     @JoinColumn(name = "patient_id",
             foreignKey = @ForeignKey(name = "PATIENT_ID_FK"))
@@ -52,6 +39,50 @@ public class Shedule implements Serializable {
     //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     @Column
     private Date time;
+    @Temporal(TemporalType.DATE)
+    @Column
+    private Date start;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "\"end\"")
+    private Date end;
+    @Column
+    private String duration;
+    @Column
+    private String title;
+
+    public Shedule() {
+    }
+
+    @Override
+    public String toString() {
+        return "Shedule{" +
+                "doctor=" + doctor +
+                ", patient=" + patient +
+                ", shedule_id=" + shedule_id +
+                ", date=" + date +
+                ", time=" + time +
+                ", start=" + start +
+                ", end=" + end +
+                ", duration='" + duration + '\'' +
+                ", title='" + title + '\'' +
+                '}';
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
+    }
 
     public Date getStart() {
         return start;
@@ -61,25 +92,18 @@ public class Shedule implements Serializable {
         this.start = start;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column
-    private Date start;
-
-    @Column
-    private String duration;
 
 //    @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column
 //    private Date start;
+
 //
 //    @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column
 //    private Date end;
 
-    public Shedule() {
-    }
 
     public Date getTime() {
         return time;

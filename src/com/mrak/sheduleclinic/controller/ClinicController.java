@@ -45,6 +45,7 @@ public class ClinicController {
     @RequestMapping(value = "/test")
     public String test(Model model) {
         model.addAttribute("calendar", new Calendar());
+        //model.addAttribute("events1", sheduleService.listShedules());
         return "test";
     }
 
