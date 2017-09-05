@@ -20,6 +20,19 @@ public class Shedule implements Serializable {
             foreignKey = @ForeignKey(name = "DOCTOR_ID_FK"))
     private Doctor doctor;
 
+    @Override
+    public String toString() {
+        return "Shedule{" +
+                "doctor=" + doctor +
+                ", patient=" + patient +
+                ", shedule_id=" + shedule_id +
+                ", date=" + date +
+                ", time=" + time +
+                ", start=" + start +
+                ", duration='" + duration + '\'' +
+                '}';
+    }
+
     @ManyToOne
     @JoinColumn(name = "patient_id",
             foreignKey = @ForeignKey(name = "PATIENT_ID_FK"))
@@ -31,23 +44,45 @@ public class Shedule implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    //@DateTimeFormat(pattern = "dd--MM-yyyy")
-    //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     @Column
     private Date date;
+
     @Temporal(TemporalType.TIME)
     @DateTimeFormat(pattern = "HH:mm")
     //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     @Column
     private Date time;
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    @Temporal(TemporalType.DATE)
+    @Column
+    private Date start;
+
     @Column
     private String duration;
 
-    public Date getTime() {
-        return time;
-    }
+//    @Temporal(TemporalType.DATE)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @Column
+//    private Date start;
+//
+//    @Temporal(TemporalType.DATE)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @Column
+//    private Date end;
 
     public Shedule() {
+    }
+
+    public Date getTime() {
+        return time;
     }
 
     public void setTime(Date time) {
@@ -85,16 +120,6 @@ public class Shedule implements Serializable {
 //    @JoinColumn(name = "patient_id")
 //    private Patient patient;
 
-    @Override
-    public String toString() {
-        return "Shedule{" +
-                "doctor=" + doctor +
-                ", patient=" + patient +
-                ", time=" + date +
-                ", duration=" + duration +
-                '}';
-    }
-
 
 //    public Patient getPatient() {
 //        return patient;
@@ -117,8 +142,8 @@ public class Shedule implements Serializable {
         return date;
     }
 
-    public void setDate(Date time) {
-        this.date = time;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getDuration() {

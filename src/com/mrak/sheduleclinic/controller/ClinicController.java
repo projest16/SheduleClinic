@@ -1,5 +1,6 @@
 package com.mrak.sheduleclinic.controller;
 
+import com.mrak.sheduleclinic.model.Calendar;
 import com.mrak.sheduleclinic.model.Doctor;
 import com.mrak.sheduleclinic.model.Patient;
 import com.mrak.sheduleclinic.model.Shedule;
@@ -9,10 +10,10 @@ import com.mrak.sheduleclinic.service.SheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class ClinicController {
@@ -41,6 +42,19 @@ public class ClinicController {
         return "index";
     }
 
+    @RequestMapping(value = "/test")
+    public String test(Model model) {
+        model.addAttribute("calendar", new Calendar());
+        return "test";
+    }
+
+    @RequestMapping(value = "/weekselection")
+    public ModelAndView weekSelection(@ModelAttribute("calendar") Calendar calendar) {
+        ModelAndView mav = new ModelAndView("test");
+        mav.addObject("calendar", calendar);
+        return mav;
+    }
+
     @RequestMapping(value = "/listdoctors", method = RequestMethod.GET)
     public String listDoctors(Model model) {
         model.addAttribute("doctor", new Doctor());
@@ -48,8 +62,12 @@ public class ClinicController {
         return "listdoctors";
     }
 
-    //
-
+    @RequestMapping(value = "/1", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    List<Shedule> getListShedule(){
+        return sheduleService.listShedules();
+//        Doctor getDoctor(@RequestParam("id") int id)
+    }
 
     //
 //    @RequestMapping(value = "/shedule/{id}")

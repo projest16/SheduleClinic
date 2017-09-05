@@ -73,6 +73,10 @@
             left: 70px;
         }
     </style>
+    <!-- Bootstrap -->
+    <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="grid.css" rel="stylesheet">
 </head>
 <h1>Admin Panel</h1>
 <div class="block1">
@@ -161,7 +165,7 @@
         </tr>
         <td colspan="2">
             <input type="submit"
-                   value="<spring:message text="Add Patient"/>"/>
+                   value="<spring:message text="Add Patient"/>" class="btn btn-success button"/>
         </td>
         </tr>
     </table>
@@ -231,5 +235,11 @@
     </c:forEach>
 </table>
 </div>
+
+
+
+
+
+
 </body>
 </html>
