@@ -57,13 +57,35 @@ $(function () {
     }
 
     form.dialog({
-        position: { my: "right", of: button},
+        position: { at: calendar },
         autoOpen: true,
         buttons: [{
             id: 'add',
             text: 'Добавить',
             click: function() {
-                //some code
+                var data = {
+                    title: event_type.val(),
+                    start: event_start.val(),
+                    end: event_end.val(),
+                    //op: 'add'
+                    // op: 'add'
+                }
+                $.ajax({
+                    type: "POST",
+                    contentType : "application/json",
+                    url: "/2",
+                    data: JSON.stringify(data),
+                    // success: function(id){
+                    //     calendar.fullCalendar('renderEvent', {
+                    //         id: id,
+                    //         title: event_type.val(),
+                    //         start: event_start.val(),
+                    //         end: event_end.val(),
+                    //         allDay: false
+                    //     });
+                    // }
+                });
+                emptyForm();
             }
         },
             {   id: 'edit',
@@ -87,4 +109,6 @@ $(function () {
                 disabled: true
             }]
     });
+
+
 });

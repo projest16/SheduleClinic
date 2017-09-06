@@ -70,7 +70,9 @@ public class ClinicController {
     }
 
     @RequestMapping(value = "/2", method = RequestMethod.POST, consumes = "application/json")
-    public void setShedule(@RequestBody Shedule shedule) {
+    public @ResponseBody
+    void setShedule(@RequestBody Shedule shedule) {
+        sheduleService.addShedule(shedule);
     }
 
     //
