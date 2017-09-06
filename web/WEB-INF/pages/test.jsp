@@ -5,23 +5,28 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="../../resources/bootstrap-3.3.7/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="../../resources/css/style.css">
     <link rel="stylesheet" href="../../resources/fc/fullcalendar.css">
     <link rel="stylesheet" href="../../resources/fc/fullcalendar.print.css" media="print">
-    <link rel="stylesheet" href="../../resources/css/style.css">
+    <%--<link rel="stylesheet" href="../../resources/bootstrap-3.3.7/css/bootstrap.min.css">--%>
 
 </head>
 <body>
-<%--<div id="calendar"></div>--%>
-<div id="dialog">
-    <form>
-        <div class="form-group">
-            <label for="title">Название события</label>
-            <input type="text" class="form-control" id="title" placeholder="Название события">
-        </div>
-        <button type="submit" class="btn btn-success">Добавить событие</button>
+<button id="add_event_button">Добавить событие</button>
+<div id="dialog-form" title="Событие">
+    <form id="formAddEvent">
+        <p><label for="event_type">Тип события</label>
+            <input type="text" id="event_type" name="event_type" value=""></p>
+        <p><label for="event_start">Начало</label>
+            <input type="text" name="event_start" id="event_start"/></p>
+        <p><label for="event_end">Конец</label>
+            <input type="text" name="event_end" id="event_end"/></p>
+        <input type="hidden" name="event_id" id="event_id" value="">
     </form>
 </div>
+<div id="calendar"></div>
 
 <script src="../../resources/fc/lib/jquery.min.js"></script>
 <script src="../../resources/jquery-ui/jquery-ui.min.js"></script>

@@ -65,9 +65,12 @@ public class ClinicController {
 
     @RequestMapping(value = "/1", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    List<Shedule> getListShedule(){
+    List<Shedule> getListShedule() {
         return sheduleService.listShedules();
-//        Doctor getDoctor(@RequestParam("id") int id)
+    }
+
+    @RequestMapping(value = "/2", method = RequestMethod.POST, consumes = "application/json")
+    public void setShedule(@RequestBody Shedule shedule) {
     }
 
     //
