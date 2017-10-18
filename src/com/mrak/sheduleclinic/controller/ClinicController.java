@@ -8,11 +8,16 @@ import com.mrak.sheduleclinic.service.DoctorService;
 import com.mrak.sheduleclinic.service.PatientService;
 import com.mrak.sheduleclinic.service.SheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -20,6 +25,9 @@ public class ClinicController {
     private DoctorService doctorService;
     private SheduleService sheduleService;
     private PatientService patientService;
+
+
+
 
     @Autowired(required = true)
     public void setPatientService(PatientService patientService) {
@@ -45,8 +53,26 @@ public class ClinicController {
     @RequestMapping(value = "/test")
     public String test(Model model) {
         model.addAttribute("calendar", new Calendar());
+        model.addAttribute("listDoctors", this.doctorService.listDoctors());
+        model.addAttribute("shedule", new Shedule());
         //model.addAttribute("events1", sheduleService.listShedules());
         return "test";
+    }
+
+    @RequestMapping(value = "/test2")
+    public String test2(Model model) {
+        model.addAttribute("calendar", new Calendar());
+        model.addAttribute("listDoctors", this.doctorService.listDoctors());
+        model.addAttribute("shedule", new Shedule());
+        //model.addAttribute("events1", sheduleService.listShedules());
+        return "test2";
+    }
+
+    @RequestMapping(value = "/range")
+    public String range(Model model) {
+        //model.addAttribute("events1", sheduleService.listShedules());
+        model.addAttribute("shedule", new Shedule());
+        return "range";
     }
 
     @RequestMapping(value = "/weekselection")

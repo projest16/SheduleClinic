@@ -1,9 +1,8 @@
 package com.mrak.sheduleclinic.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -29,28 +28,50 @@ public class Shedule implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int shedule_id;
 
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column
-    private Date date;
+//    @Temporal(TemporalType.DATE)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @Column
+//    private Date date;
 
-    @Temporal(TemporalType.TIME)
-    @DateTimeFormat(pattern = "HH:mm")
-    //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-    @Column
-    private Date time;
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.TIME)
+//    @DateTimeFormat(pattern = "HH:mm")
+//    @Column
+//    private Date time;
+    //    @Temporal(TemporalType.TIMESTAMP)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+
+    //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //@Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column
     private Date start;
-    @Temporal(TemporalType.DATE)
+
+    //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //@Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "\"end\"")
     private Date end;
-    @Column
-    private String duration;
+
     @Column
     private String title;
 
     public Shedule() {
+    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Timestamp start) {
+        this.start = start;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Timestamp end) {
+        this.end = end;
     }
 
     @Override
@@ -59,11 +80,8 @@ public class Shedule implements Serializable {
                 "doctor=" + doctor +
                 ", patient=" + patient +
                 ", shedule_id=" + shedule_id +
-                ", date=" + date +
-                ", time=" + time +
                 ", start=" + start +
                 ", end=" + end +
-                ", duration='" + duration + '\'' +
                 ", title='" + title + '\'' +
                 '}';
     }
@@ -74,22 +92,6 @@ public class Shedule implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Date getEnd() {
-        return end;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
-
-    public Date getStart() {
-        return start;
-    }
-
-    public void setStart(Date start) {
-        this.start = start;
     }
 
 
@@ -103,15 +105,6 @@ public class Shedule implements Serializable {
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column
 //    private Date end;
-
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
 
     public int getShedule_id() {
         return shedule_id;
@@ -160,21 +153,4 @@ public class Shedule implements Serializable {
 //    public void setDoctor(Doctor doctor) {
 //        this.doctor = doctor;
 //    }
-
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
 }

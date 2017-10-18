@@ -63,7 +63,7 @@
         }
 
         .block2{
-            width: 300px;
+            width: 500px;
             background: #fc0;
             padding: 5px;
             border: solid 1px black;
@@ -229,8 +229,8 @@
             <td>${shedule.shedule_id}</td>
             <td>${shedule.doctor.surname}</td>
             <td>${shedule.patient.surname}</td>
-            <td>${shedule.date}</td>
-            <td>${shedule.time}</td>
+            <td>${shedule.start}</td>
+            <%--<td>${shedule.time}</td>--%>
         </tr>
     </c:forEach>
 </table>

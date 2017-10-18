@@ -1,114 +1,75 @@
 $(function () {
-
-    $('#calendar').fullCalendar(
-        {
-            dayClick: function(date, allDay, jsEvent, view) {
-                var newDate = $.fullCalendar.formatDate(date, format);
-                event_start.val(newDate);
-                event_end.val(newDate);
-                formOpen('add');
-            },
-
-            // defaultView: "agendaWeek",
-            header: {
-                center: 'month, agendaWeek'
-            },
-
-            eventSources: [{
-                url: '/1'
-            }]
-        });
-
-        // $( "#dialog" ).dialog();
-
-    var event_start = $('#event_start');
-    var event_end = $('#event_end');
-    var event_type = $('#event_type');
-    var calendar = $('#calendar');
-    var form = $('#dialog-form');
-    var event_id = $('#event_id');
-    var format = "MM/dd/yyyy HH:mm";
-    /* кнопка добавления события */
-    $('#add_event_button').button().click(function(){
-        formOpen('add');
-    });
-    /** функция очистки формы */
-    function emptyForm() {
-        event_start.val("");
-        event_end.val("");
-        event_type.val("");
-        event_id.val("");
-    }
-    /* режимы открытия формы */
-    function formOpen(mode) {
-        if(mode == 'add') {
-            /* скрываем кнопки Удалить, Изменить и отображаем Добавить*/
-            $('#add').show();
-            $('#edit').hide();
-            $("#delete").button("option", "disabled", true);
+    $('#calendar').fullCalendar({
+        dayClick: function(date, jsEvent, view) {
+            document.getElementById("text_dateStart").innerHTML = date.format();
+            document.getElementById("text_dateEnd").innerHTML = date.format();
         }
-        else if(mode == 'edit') {
-            /* скрываем кнопку Добавить, отображаем Изменить и Удалить*/
-            $('#edit').show();
-            $('#add').hide();
-            $("#delete").button("option", "disabled", false);
-        }
-        form.dialog('open');
-    }
-
-    form.dialog({
-        position: { at: calendar },
-        autoOpen: true,
-        buttons: [{
-            id: 'add',
-            text: 'Добавить',
-            click: function() {
-                var data = {
-                    title: event_type.val(),
-                    start: event_start.val(),
-                    end: event_end.val(),
-                    //op: 'add'
-                    // op: 'add'
-                }
-                $.ajax({
-                    type: "POST",
-                    contentType : "application/json",
-                    url: "/2",
-                    data: JSON.stringify(data),
-                    // success: function(id){
-                    //     calendar.fullCalendar('renderEvent', {
-                    //         id: id,
-                    //         title: event_type.val(),
-                    //         start: event_start.val(),
-                    //         end: event_end.val(),
-                    //         allDay: false
-                    //     });
-                    // }
-                });
-                emptyForm();
-            }
-        },
-            {   id: 'edit',
-                text: 'Изменить',
-                click: function() {
-                    //some code
-                }
-            },
-            {   id: 'cancel',
-                text: 'Отмена',
-                click: function() {
-                    $(this).dialog('close');
-                    emptyForm();
-                }
-            },
-            {   id: 'delete',
-                text: 'Удалить',
-                click: function() {
-                    //some code
-                },
-                disabled: true
-            }]
     });
 
+    function event1() {
+        "alert('Клик!')";
 
+
+    }
+
+    $( function() {
+
+    } );
 });
+
+
+var b = 5;
+
+function event1() {
+    var i = $('#event_1');
+    // var date_start = document.getElementById('text_date').value + ' ' + document.getElementById('event_hour').value + ':' + document.getElementById('event_minut').value;
+    // var date_end = document.getElementById('text_date').value + ' ' + document.getElementById('event_hour').value + ':' + document.getElementById('event_minut').value + ':05';
+    // var date_start = "2017-10-17";
+    // var date_end = date_start;
+
+    // alert(date_start);
+
+
+    var string_date_start = document.getElementById('text_dateStart').value + ' ' + document.getElementById('eventStart_hour').value + ':' + document.getElementById('eventStart_minute').value;
+    var string_date_end = document.getElementById('text_dateEnd').value + ' ' + document.getElementById('eventEnd_hour').value + ':' + document.getElementById('eventEnd_minute').value;
+
+    var doctor_id = Number(document.getElementById('doctor').value);
+
+    var date_start = new Date(string_date_start);
+    var date_end = new Date(string_date_end);
+
+    //date_start = document.getElementById('text_date').value;
+
+    //document.getElementById("text_test").innerHTML = doctor_id;
+
+    var data = {
+        start: date_start,
+        end: date_end
+    }
+
+
+
+    $.ajax({
+        type: "POST",
+        contentType : "application/json",
+        url: "/2",
+        data: JSON.stringify(data)
+    });
+}
+
+function event2() {
+    var string_date_start = document.getElementById('text_dateStart').value + ' ' + document.getElementById('eventStart_hour').value + ':' + document.getElementById('eventStart_minute').value;
+    var string_date_end = document.getElementById('text_dateEnd').value + ' ' + document.getElementById('eventEnd_hour').value + ':' + document.getElementById('eventEnd_minute').value;
+    var date_start = new Date(string_date_start);
+    var date_end = new Date(string_date_end);
+    document.getElementById("start").innerHTML = date_start;
+    document.getElementById("end").innerHTML = date_end;
+    alert(document.getElementById("start").value);
+
+}
+
+function event3() {
+    var string_date_start = document.getElementById('text_dateStart').value;
+    var date_start = new Date(string_date_start);
+    document.getElementById("hiddenarea").innerHTML = date_start;
+}
