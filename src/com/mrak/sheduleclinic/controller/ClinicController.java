@@ -139,7 +139,7 @@ public class ClinicController {
     @RequestMapping(value = "/admin/addShedule", method = RequestMethod.POST)
     public String addSheduleAtAdminPanel(@ModelAttribute("shedule") Shedule shedule) {
         this.sheduleService.addShedule(shedule);
-        return "redirect:/admin";
+        return "redirect:/test2";
     }
 
     @RequestMapping(value = "/admin/addDoctor", method = RequestMethod.POST)

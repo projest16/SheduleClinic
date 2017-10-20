@@ -27,22 +27,86 @@
 <div id="dialog-form" title="Событие">
     <%--<form id="formAddEvent">--%>
     <form:form id="formAddEvent" action="/admin/addShedule" method="post" modelAttribute="shedule">
-        <p><label for="text_title">Дата начала</label>
+        <p><label for="text_title">Заголовок</label>
             <input id="text_title" name="title">
-        <p><label for="text_dateStart">Дата начала</label>
-            <input id="text_dateStart" name="start">
-        <p><label for="text_dateEnd">Дата конца</label>
-            <input id="text_dateEnd" name="end">
+        <p><label for="dateStart">Дата начала</label>
+            <input id="dateStart" type="text">
+
+            <p><label for="eventStart_hours">Время начала</label>
+            <p><select id="eventStart_hours">
+            <option>08</option>
+            <option>09</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            </select>
+
+            <select id="eventStart_minutes">
+            <option>00</option>
+            <option>05</option>
+            <option>10</option>
+            <option>15</option>
+            <option>20</option>
+            <option>25</option>
+            <option>30</option>
+            <option>35</option>
+            <option>40</option>
+            <option>45</option>
+            <option>50</option>
+            <option>55</option>
+            </select></p>
 
 
-        <tr>
-            <td>Доктор:</td>
-            <td><form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname" itemValue="doctor_id"/>
-            </td>
-        </tr>
+        <p><label for="dateEnd">Дата конца</label>
+            <input id="dateEnd" type="text">
+
+        <p><label for="eventEnd_hours">Время окончания</label>
+        <p><select id="eventEnd_hours">
+            <option>08</option>
+            <option>09</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+        </select>
+
+            <select id="eventEnd_minutes">
+                <option>00</option>
+                <option>05</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>35</option>
+                <option>40</option>
+                <option>45</option>
+                <option>50</option>
+                <option>55</option>
+            </select></p>
+
+        <input id="hide_dateStart" name="start" type="hidden">
+        <input id="hide_dateEnd" name="end" type="hidden">
+
+        <p><label for="doctor">Доктор:</label></p>
+            <p><form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname" itemValue="doctor_id"/>
+            </p>
 
         <td colspan="2">
-            <input type="submit"
+            <input type="submit" onclick="event3()"
                    value="<spring:message text="Add Shedule"/>"/>
         </td>
         <%--</form>--%>

@@ -1,9 +1,17 @@
 $(function () {
     $('#calendar').fullCalendar({
         dayClick: function(date, jsEvent, view) {
-            document.getElementById("text_dateStart").innerHTML = date.format();
-            document.getElementById("text_dateEnd").innerHTML = date.format();
-        }
+            document.getElementById("dateStart").value = date.format();
+            document.getElementById("dateEnd").value = date.format();
+        },
+
+        header: {
+            center: 'month, agendaWeek'
+        },
+
+        eventSources: [{
+            url: '/1'
+        }]
     });
 
     function event1() {
@@ -69,7 +77,10 @@ function event2() {
 }
 
 function event3() {
-    var string_date_start = document.getElementById('text_dateStart').value;
-    var date_start = new Date(string_date_start);
-    document.getElementById("hiddenarea").innerHTML = date_start;
+    var date_start = document.getElementById('dateStart').value + ' ' + document.getElementById('eventStart_hours').value + ':' + document.getElementById('eventStart_minutes').value + ':00';
+    var date_end = document.getElementById('dateEnd').value + ' ' + document.getElementById('eventEnd_hours').value + ':' + document.getElementById('eventEnd_minutes').value + ':00';
+
+    document.getElementById('hide_dateStart').value = date_start;
+    document.getElementById('hide_dateEnd').value = date_end;
+    //alert(date_start);
 }
