@@ -123,13 +123,14 @@
 
 
 
-<script src="../../resources/fc/fullcalendar.js"></script>
+
 <script src="../../resources/js/jquery-3.2.1.min.js"></script>
 <script src="../../resources/jquery-ui/jquery-ui.min.js"></script>
 <script src="../../resources/fc/lib/moment.min.js"></script>
 <script src="../../resources/fc/locale/ru.js"></script>
 <script src="../../resources/js/main.js"></script>
 <script src="../../resources/air-datepicker/datepicker.js"></script>
+<script src="../../resources/fc/fullcalendar.js"></script>
 </body>
 </html>
 
