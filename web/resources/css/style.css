@@ -1,5 +1,5 @@
 #calendar{
-    max-width: 500px;
+    max-width: 700px;
     margin: auto;
 }
 #calendar .fc-day:hover{
@@ -8,5 +8,3 @@
 #calendar .fc-day{
     transition: all .4s;
 }
-
-#datepicker{}

@@ -12,13 +12,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="header.jsp"/>
 <html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../resources/css/style.css">
+    <link rel="stylesheet" href="../../resources/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="../../resources/fc/fullcalendar.css">
     <link rel="stylesheet" href="../../resources/air-datepicker/datepicker.css">
     <link rel="stylesheet" href="../../resources/fc/fullcalendar.print.css" media="print">
+    <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -27,8 +30,7 @@
 <div id="dialog-form" title="Событие">
     <%--<form id="formAddEvent">--%>
     <form:form id="formAddEvent" action="/admin/addShedule" method="post" modelAttribute="shedule">
-        <p><label for="text_title">Заголовок</label>
-            <input id="text_title" name="title">
+            <input id="text_title" name="title" type="hidden">
         <p><label for="dateStart">Дата начала</label>
             <input id="dateStart" type="text">
 
@@ -105,9 +107,14 @@
             <p><form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname" itemValue="doctor_id"/>
             </p>
 
+        <p><label for="patient">Пациент:</label></p>
+        <p><form:select id="patient" path="patient.patient_id" items="${listPatients}" itemLabel="surname" itemValue="patient_id"/>
+        </p>
+
         <td colspan="2">
             <input type="submit" onclick="event3()"
-                   value="<spring:message text="Add Shedule"/>"/>
+                   value="<spring:message text="Add Shedule"/>" class="ui-button"/>
+            <%--class="btn btn-success button"--%>
         </td>
         <%--</form>--%>
     </form:form>
@@ -116,10 +123,10 @@
 
 
 
+<script src="../../resources/fc/fullcalendar.js"></script>
 <script src="../../resources/js/jquery-3.2.1.min.js"></script>
 <script src="../../resources/jquery-ui/jquery-ui.min.js"></script>
 <script src="../../resources/fc/lib/moment.min.js"></script>
-<script src="../../resources/fc/fullcalendar.js"></script>
 <script src="../../resources/fc/locale/ru.js"></script>
 <script src="../../resources/js/main.js"></script>
 <script src="../../resources/air-datepicker/datepicker.js"></script>

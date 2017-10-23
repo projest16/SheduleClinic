@@ -63,6 +63,7 @@ public class ClinicController {
     public String test2(Model model) {
         model.addAttribute("calendar", new Calendar());
         model.addAttribute("listDoctors", this.doctorService.listDoctors());
+        model.addAttribute("listPatients", this.patientService.listPatients());
         model.addAttribute("shedule", new Shedule());
         //model.addAttribute("events1", sheduleService.listShedules());
         return "test2";
@@ -138,6 +139,7 @@ public class ClinicController {
 
     @RequestMapping(value = "/admin/addShedule", method = RequestMethod.POST)
     public String addSheduleAtAdminPanel(@ModelAttribute("shedule") Shedule shedule) {
+        //shedule.setTitle(shedule.getPatient().getSurname());
         this.sheduleService.addShedule(shedule);
         return "redirect:/test2";
     }

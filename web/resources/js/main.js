@@ -1,6 +1,7 @@
 $(function () {
     $('#calendar').fullCalendar({
         dayClick: function(date, jsEvent, view) {
+            $( "#dialog-form" ).dialog( "open" );
             document.getElementById("dateStart").value = date.format();
             document.getElementById("dateEnd").value = date.format();
         },
@@ -20,9 +21,11 @@ $(function () {
 
     }
 
-    $( function() {
 
-    } );
+    $("#dialog-form").dialog({
+        autoOpen: false
+    });
+
 });
 
 
@@ -82,5 +85,7 @@ function event3() {
 
     document.getElementById('hide_dateStart').value = date_start;
     document.getElementById('hide_dateEnd').value = date_end;
+    var tmp = document.getElementById('patient');
+    document.getElementById('text_title').value = tmp.options[tmp.selectedIndex].text;
     //alert(date_start);
 }
