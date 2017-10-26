@@ -24,18 +24,25 @@
     <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<script src="../../resources/js/jquery-3.2.1.min.js"></script>
+<script src="../../resources/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../resources/fc/lib/moment.min.js"></script>
+<script src="../../resources/fc/locale/ru.js"></script>
+<script src="../../resources/js/main.js"></script>
+<script src="../../resources/air-datepicker/datepicker.js"></script>
+<script src="../../resources/fc/fullcalendar.js"></script>
 
 <div id="calendar"></div>
 
 <div id="dialog-form" title="Событие">
     <%--<form id="formAddEvent">--%>
     <form:form id="formAddEvent" action="/admin/addShedule" method="post" modelAttribute="shedule">
-            <input id="text_title" name="title" type="hidden">
+        <input id="text_title" name="title" type="hidden">
         <p><label for="dateStart">Дата начала</label>
             <input id="dateStart" type="text">
 
-            <p><label for="eventStart_hours">Время начала</label>
-            <p><select id="eventStart_hours">
+        <p><label for="eventStart_hours">Время начала</label>
+        <p><select id="eventStart_hours">
             <option>08</option>
             <option>09</option>
             <option>10</option>
@@ -48,21 +55,21 @@
             <option>17</option>
             <option>18</option>
             <option>19</option>
-            </select>
+        </select>
 
             <select id="eventStart_minutes">
-            <option>00</option>
-            <option>05</option>
-            <option>10</option>
-            <option>15</option>
-            <option>20</option>
-            <option>25</option>
-            <option>30</option>
-            <option>35</option>
-            <option>40</option>
-            <option>45</option>
-            <option>50</option>
-            <option>55</option>
+                <option>00</option>
+                <option>05</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>35</option>
+                <option>40</option>
+                <option>45</option>
+                <option>50</option>
+                <option>55</option>
             </select></p>
 
 
@@ -104,33 +111,34 @@
         <input id="hide_dateEnd" name="end" type="hidden">
 
         <p><label for="doctor">Доктор:</label></p>
-            <p><form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname" itemValue="doctor_id"/>
-            </p>
+        <p><form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname"
+                        itemValue="doctor_id"/>
+        </p>
 
         <p><label for="patient">Пациент:</label></p>
-        <p><form:select id="patient" path="patient.patient_id" items="${listPatients}" itemLabel="surname" itemValue="patient_id"/>
+        <p><form:select id="patient" path="patient.patient_id" items="${listPatients}" itemLabel="surname"
+                        itemValue="patient_id"/>
         </p>
 
         <td colspan="2">
             <input type="submit" onclick="event3()"
-                   value="<spring:message text="Add Shedule"/>" class="ui-button"/>
-            <%--class="btn btn-success button"--%>
+                   value="<spring:message text="Добавить запись"/>" class="ui-button"/>
+                <%--class="btn btn-success button"--%>
         </td>
         <%--</form>--%>
     </form:form>
 </div>
 
+<div id="dialog-form-edit" title="Редактировать событие">
+    <form:form id="formDeleteEvent" action="/admin/deleteShedule" method="post">
+        <input id="sheduleID" type="hidden" name="sheduleID">
+        <input type="submit"
+               value="<spring:message text="Удалить запись"/>" class="ui-button"/>
+    </form:form>
+
+</div>
 
 
-
-
-<script src="../../resources/js/jquery-3.2.1.min.js"></script>
-<script src="../../resources/jquery-ui/jquery-ui.min.js"></script>
-<script src="../../resources/fc/lib/moment.min.js"></script>
-<script src="../../resources/fc/locale/ru.js"></script>
-<script src="../../resources/js/main.js"></script>
-<script src="../../resources/air-datepicker/datepicker.js"></script>
-<script src="../../resources/fc/fullcalendar.js"></script>
 </body>
 </html>
 

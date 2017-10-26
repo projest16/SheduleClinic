@@ -144,6 +144,13 @@ public class ClinicController {
         return "redirect:/test2";
     }
 
+    @RequestMapping(value = "/admin/deleteShedule", method = RequestMethod.POST)
+    public String deleteSheduleAtAdminPanel(@RequestParam("sheduleID") int sheduleId) {
+        //shedule.setTitle(shedule.getPatient().getSurname());
+        this.sheduleService.deleteSheduleById(sheduleId);
+        return "redirect:/test2";
+    }
+
     @RequestMapping(value = "/admin/addDoctor", method = RequestMethod.POST)
     public String addDoctorAtAdminPanel(@ModelAttribute("doctor") Doctor doctor) {
         this.doctorService.addDoctor(doctor);

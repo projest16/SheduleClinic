@@ -10,6 +10,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="header.jsp"/>
 <html>
 <head>
     <title>Title</title>
@@ -226,7 +227,7 @@
     </tr>
     <c:forEach items="${listShedules}" var="shedule">
         <tr>
-            <td>${shedule.shedule_id}</td>
+            <td>${shedule.id}</td>
             <td>${shedule.doctor.surname}</td>
             <td>${shedule.patient.surname}</td>
             <td>${shedule.start}</td>

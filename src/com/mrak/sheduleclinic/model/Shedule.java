@@ -26,7 +26,7 @@ public class Shedule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int shedule_id;
+    private int id;
 
 //    @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -79,7 +79,7 @@ public class Shedule implements Serializable {
         return "Shedule{" +
                 "doctor=" + doctor +
                 ", patient=" + patient +
-                ", shedule_id=" + shedule_id +
+                ", shedule_id=" + id +
                 ", start=" + start +
                 ", end=" + end +
                 ", title='" + title + '\'' +
@@ -106,12 +106,12 @@ public class Shedule implements Serializable {
 //    @Column
 //    private Date end;
 
-    public int getShedule_id() {
-        return shedule_id;
+    public int getId() {
+        return id;
     }
 
-    public void setShedule_id(int shedule_id) {
-        this.shedule_id = shedule_id;
+    public void setId(int shedule_id) {
+        this.id = shedule_id;
     }
 
     public Doctor getDoctor() {

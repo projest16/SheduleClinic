@@ -5,13 +5,20 @@ $(function () {
             document.getElementById("dateStart").value = date.format();
             document.getElementById("dateEnd").value = date.format();
         },
+        
+        eventClick: function (calEvent, jsEvent, view) {
+            $( "#dialog-form-edit" ).dialog( "open" );
+            document.getElementById("sheduleID").value = calEvent.id;
+
+
+        },
 
         header: {
             center: 'month, agendaWeek'
         },
 
         eventSources: [{
-            url: '/1'
+            url: '/1',
         }]
     });
 
@@ -23,6 +30,10 @@ $(function () {
 
 
     $("#dialog-form").dialog({
+        autoOpen: false
+    });
+
+    $("#dialog-form-edit").dialog({
         autoOpen: false
     });
 

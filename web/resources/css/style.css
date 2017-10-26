@@ -8,3 +8,11 @@
 #calendar .fc-day{
     transition: all .4s;
 }
+
+#dialog-form{
+    display: none;
+}
+
+#dialog-form-edit{
+    display: none;
+}

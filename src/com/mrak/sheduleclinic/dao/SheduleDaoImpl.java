@@ -1,9 +1,11 @@
 package com.mrak.sheduleclinic.dao;
 
 import com.mrak.sheduleclinic.model.Shedule;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -35,5 +37,22 @@ public class SheduleDaoImpl implements SheduleDao{
         System.out.println(shedule);
         Session session = this.sessionFactory.getCurrentSession();
         session.save(shedule);
+    }
+
+    @Override
+    public Shedule getSheduleById(int shedule_id) {
+        Criteria criteria = sessionFactory.
+                getCurrentSession().
+                createCriteria(Shedule.class);
+        criteria.add(Restrictions.eq("id", shedule_id));
+        return (Shedule) criteria.uniqueResult();
+    }
+
+    @Override
+    public void deleteSheduleById(int shedule_id) {
+        Shedule shedule = getSheduleById(shedule_id);
+        final Session session = sessionFactory.getCurrentSession();
+        session.delete(shedule);
+        session.flush();
     }
 }
