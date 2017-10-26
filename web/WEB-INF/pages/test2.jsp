@@ -132,8 +132,14 @@
 <div id="dialog-form-edit" title="Редактировать событие">
     <form:form id="formDeleteEvent" action="/admin/deleteShedule" method="post">
         <input id="sheduleID" type="hidden" name="sheduleID">
-        <input type="submit"
-               value="<spring:message text="Удалить запись"/>" class="ui-button"/>
+        <input type="hidden">
+        <input type="hidden">
+        <input type="hidden">
+        <input type="hidden">
+        <input type="hidden">
+        <label for="button_formDeleteEvent">Удалить запись?</label>
+        <input id="button_formDeleteEvent" type="submit"
+               value="<spring:message text="Да"/>" class="ui-button"/>
     </form:form>
 
 </div>

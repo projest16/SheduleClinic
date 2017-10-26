@@ -42,14 +42,14 @@ public class Shedule implements Serializable {
 
     //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //@Temporal(TemporalType.TIMESTAMP)
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column
+    //@Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition= "TIMESTAMP WITH TIME ZONE")
     private Date start;
 
     //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //@Temporal(TemporalType.TIMESTAMP)
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "\"end\"")
+    //@Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "\"end\"", columnDefinition= "TIMESTAMP WITH TIME ZONE")
     private Date end;
 
     @Column

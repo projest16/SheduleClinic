@@ -13,6 +13,8 @@ $(function () {
 
         },
 
+        timezone: 'local',
+
         header: {
             center: 'month, agendaWeek'
         },
