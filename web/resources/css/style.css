@@ -1,0 +1,18 @@
+#calendar{
+    max-width: 700px;
+    margin: auto;
+}
+#calendar .fc-day:hover{
+    background: #ccc;
+}
+#calendar .fc-day{
+    transition: all .4s;
+}
+
+#dialog-form{
+    display: none;
+}
+
+#dialog-form-edit{
+    display: none;
+}

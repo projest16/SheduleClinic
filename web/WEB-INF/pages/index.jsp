@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="header.jsp"/>
 <html>
   <head>
     <title>$Title$</title>
@@ -15,9 +16,6 @@
     <link href="grid.css" rel="stylesheet">
   </head>
   <body>
-  <h1>Стоматологическая клиника "Ровные зубки"</h1>
-  <p><a href="/listdoctors">Список докторов</a></p>
-  <p><a href="/admin">Admin panel</a></p>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

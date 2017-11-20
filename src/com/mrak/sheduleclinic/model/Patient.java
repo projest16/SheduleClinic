@@ -1,27 +1,49 @@
 package com.mrak.sheduleclinic.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table
+@Table(name = "Patient")
 public class Patient {
     @Id
-    @Column(name = "ID")
+    //@Column(name = "patient_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int patient_id;
     @Column
     private String name;
+
+//    public List<Shedule> getRecords() {
+//        return records;
+//    }
+
     @Column
     private String surname;
     @Column
     private String patronymic;
+//    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+//    private List<Shedule> records = new ArrayList<Shedule>();
 
-    public int getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "patient_id=" + patient_id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                '}';
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Patient() {
+    }
+
+    public int getPatient_id() {
+        return patient_id;
+    }
+
+    public void setPatient_id(int patient_id) {
+        this.patient_id = patient_id;
     }
 
     public String getName() {
