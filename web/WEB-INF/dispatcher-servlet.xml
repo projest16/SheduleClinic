@@ -33,6 +33,7 @@
                 <value>com.mrak.sheduleclinic.model.Doctor</value>
                 <value>com.mrak.sheduleclinic.model.Shedule</value>
                 <value>com.mrak.sheduleclinic.model.Patient</value>
+                <value>com.mrak.sheduleclinic.model.Users</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -40,7 +41,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect
                 </prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
     </bean>
