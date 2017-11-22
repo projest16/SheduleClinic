@@ -24,22 +24,21 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean(name = "passwordEncoder")
     public PasswordEncoder passwordencoder() {
-        return new BCryptPasswordEncoder();
-    }
-////    @Autowired
-////    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-////        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-////        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
-////        auth.inMemoryAuthentication().withUser("superadmin").password("superadmin").roles("SUPERADMIN");
+        return new BCryptPasswordEncoder();}}
+
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+//        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+//        auth.inMemoryAuthentication().withUser("superadmin").password("superadmin").roles("SUPERADMIN");
 //    }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/map/rest/hello/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')")
-                .antMatchers("/hello/**").access("hasRole('ROLE_ADMIN')")
-                .and().formLogin().defaultSuccessUrl("/", false);
-//                .disable().csrf();
-    }
-}
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/map/rest/hello/**").access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')")
+//                .antMatchers("/hello/**").access("hasRole('ROLE_ADMIN')")
+//                .and().formLogin().defaultSuccessUrl("/", false);
+////                .disable().csrf();
+//    }
