@@ -75,11 +75,11 @@
     <!--<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>-->
 
     <!--<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">-->
-        <!--<property name="definitions">-->
-            <!--<list>-->
-                <!--<value>/WEB-INF/pages/**/views.xml</value>-->
-            <!--</list>-->
-        <!--</property>-->
+    <!--<property name="definitions">-->
+    <!--<list>-->
+    <!--<value>/WEB-INF/pages/**/views.xml</value>-->
+    <!--</list>-->
+    <!--</property>-->
     <!--</bean>-->
 
     <!--Остальное-->
@@ -99,11 +99,11 @@
        from @RequestMapping or @ExceptionHandler methods.
     -->
     <!--<mvc:annotation-driven>-->
-        <!--&lt;!&ndash;use int RestController to produce pretty json response&ndash;&gt;-->
-        <!--<mvc:message-converters>-->
-            <!--<bean id="jacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
-                <!--<property name="prettyPrint" value="true" />-->
-            <!--</bean>-->
-        <!--</mvc:message-converters>-->
+    <!--&lt;!&ndash;use int RestController to produce pretty json response&ndash;&gt;-->
+    <!--<mvc:message-converters>-->
+    <!--<bean id="jacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+    <!--<property name="prettyPrint" value="true" />-->
+    <!--</bean>-->
+    <!--</mvc:message-converters>-->
     <!--</mvc:annotation-driven>-->
 </beans>
