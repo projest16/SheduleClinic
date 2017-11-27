@@ -1,9 +1,16 @@
 $(function () {
     $('#calendar').fullCalendar({
+        locale: 'ru',
+        themeSystem: 'jquery-ui',
         dayClick: function(date, jsEvent, view) {
             $( "#dialog-form" ).dialog( "open" );
-            document.getElementById("dateStart").value = date.format();
-            document.getElementById("dateEnd").value = date.format();
+            //var format = "yyyy-MM-dd HH:mm";
+            //var newDate = $.fullCalendar.formatDate(date, format);
+            //var moment = $('#calendar').fullCalendar('getDate');
+            //alert("The current date of the calendar is " + moment.format("YYYY-MM-DD"));
+
+            document.getElementById("dateStart").value = date.format("YYYY-MM-DD");
+            document.getElementById("dateEnd").value = date.format("YYYY-MM-DD");
         },
         
         eventClick: function (calEvent, jsEvent, view) {
@@ -13,7 +20,11 @@ $(function () {
 
         },
 
+
+
         timezone: 'local',
+
+
 
         header: {
             center: 'month, agendaWeek'

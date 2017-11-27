@@ -3,5 +3,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="/test2">Войти</a></li>
+        <li><a href="/login">Войти</a></li>
+        <li><a href="/logout">Выйти</a></li>
     </ul>

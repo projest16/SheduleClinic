@@ -27,10 +27,11 @@
 <script src="../../resources/js/jquery-3.2.1.min.js"></script>
 <script src="../../resources/jquery-ui/jquery-ui.min.js"></script>
 <script src="../../resources/fc/lib/moment.min.js"></script>
-<script src="../../resources/fc/locale/ru.js"></script>
+
 <script src="../../resources/js/main.js"></script>
 <script src="../../resources/air-datepicker/datepicker.js"></script>
 <script src="../../resources/fc/fullcalendar.js"></script>
+<script src="../../resources/fc/locale-all.js"></script>
 
 <div id="calendar"></div>
 
@@ -110,13 +111,13 @@
         <input id="hide_dateStart" name="start" type="hidden">
         <input id="hide_dateEnd" name="end" type="hidden">
 
-        <p><label for="doctor">Доктор:</label></p>
-        <p><form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname"
-                        itemValue="doctor_id"/>
-        </p>
+        <p><label for="doctor">Доктор:</label>
+        <form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname"
+                        itemValue="doctor_id"/></p>
 
-        <p><label for="patient">Пациент:</label></p>
-        <p><form:select id="patient" path="patient.patient_id" items="${listPatients}" itemLabel="surname"
+
+        <p><label for="patient">Пациент:</label>
+        <form:select id="patient" path="patient.patient_id" items="${listPatients}" itemLabel="surname"
                         itemValue="patient_id"/>
         </p>
 
