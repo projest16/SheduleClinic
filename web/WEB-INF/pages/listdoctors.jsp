@@ -61,7 +61,8 @@
         <c:forEach items="${listDoctors}" var="doctor">
             <tr>
                 <td>${doctor.doctor_id}</td>
-                <td><a href="/shedule/${doctor.doctor_id}">${doctor.surname} ${doctor.name} ${doctor.patronymic}</a></td>
+                <%--<td><a href="/doctorinfo/${doctor.id}" target="_blank"${doctor.doctor_id}">${doctor.surname} ${doctor.name} ${doctor.patronymic}</a></td>--%>
+                <td><a href="<c:url value='/doctorinfo/${doctor.doctor_id}'/>">${doctor.surname} ${doctor.name} ${doctor.patronymic}</a></td>
                 <td>${doctor.position}</td>
                 <%--<td>${doctor.patronymic}</td>--%>
             </tr>

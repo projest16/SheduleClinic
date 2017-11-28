@@ -61,6 +61,12 @@ public class ClinicController {
         return "range";
     }
 
+    @RequestMapping(value = "/doctorinfo/{id}", method = RequestMethod.GET)
+    public String doctorinfo(@PathVariable("id") int id, Model model) {
+        model.addAttribute("doctor", this.doctorService.getDoctorById(id));
+        return "doctorinfo";
+    }
+
 
     @RequestMapping(value = "/listdoctors", method = RequestMethod.GET)
     public String listDoctors(Model model) {
@@ -134,14 +140,14 @@ public class ClinicController {
     public String addSheduleAtAdminPanel(@ModelAttribute("shedule") Shedule shedule) {
         //shedule.setTitle(shedule.getPatient().getSurname());
         this.sheduleService.addShedule(shedule);
-        return "redirect:/test2";
+        return "redirect:/calendar";
     }
 
     @RequestMapping(value = "/admin/deleteShedule", method = RequestMethod.POST)
     public String deleteSheduleAtAdminPanel(@RequestParam("sheduleID") int sheduleId) {
         //shedule.setTitle(shedule.getPatient().getSurname());
         this.sheduleService.deleteSheduleById(sheduleId);
-        return "redirect:/test2";
+        return "redirect:/calendar";
     }
 
     @RequestMapping(value = "/admin/addDoctor", method = RequestMethod.POST)

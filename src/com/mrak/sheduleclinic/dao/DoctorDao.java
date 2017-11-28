@@ -8,4 +8,5 @@ public interface DoctorDao {
     public List<Doctor> listDoctors();
     public Doctor getDoctorById(int id);
     public void addDoctor(Doctor doctor);
+    public void removeDoctor(Doctor doctor);
 }

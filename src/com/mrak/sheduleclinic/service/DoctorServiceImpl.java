@@ -29,4 +29,10 @@ public class DoctorServiceImpl implements DoctorService{
     public void addDoctor(Doctor doctor) {
         this.doctorDao.addDoctor(doctor);
     }
+
+    @Override
+    @Transactional
+    public void removeDoctor(Doctor doctor) {
+        this.doctorDao.addDoctor(doctor);
+    }
 }

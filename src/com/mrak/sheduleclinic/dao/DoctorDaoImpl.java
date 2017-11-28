@@ -33,4 +33,11 @@ public class DoctorDaoImpl implements DoctorDao {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(doctor);
     }
+
+    @Override
+    public void removeDoctor(Doctor doctor) {
+        Session session = this.sessionFactory.getCurrentSession();
+        if(doctor!=null)
+        session.delete(doctor);
+    }
 }
