@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -19,9 +18,6 @@ public class ClinicController {
     private DoctorService doctorService;
     private SheduleService sheduleService;
     private PatientService patientService;
-
-
-
 
     @Autowired(required = true)
     public void setPatientService(PatientService patientService) {
@@ -44,21 +40,28 @@ public class ClinicController {
         return "redirect:/shedule";
     }
 
-
     @RequestMapping(value = "/shedule")
-    public String test2(Model model) {
+    public String test2(@ModelAttribute("choosedDoctor") Doctor doctor, Model model) {
         model.addAttribute("listDoctors", this.doctorService.listDoctors());
         model.addAttribute("listPatients", this.patientService.listPatients());
         model.addAttribute("shedule", new Shedule());
+        //model.addAttribute("doctor", new Doctor());
+        model.addAttribute("choosedDoctorOut", this.doctorService.getDoctorById(doctor.getDoctor_id()));
+
         //model.addAttribute("events1", sheduleService.listShedules());
         return "calendar";
     }
 
-    @RequestMapping(value = "/range")
-    public String range(Model model) {
-        //model.addAttribute("events1", sheduleService.listShedules());
-        model.addAttribute("shedule", new Shedule());
-        return "range";
+    @RequestMapping(value = "/range1")
+    public String range1(Model model) {
+
+        return "range1";
+    }
+
+    @RequestMapping(value = "/range2")
+    public String range2(Model model) {
+
+        return "range2";
     }
 
     @RequestMapping(value = "/doctorinfo/{id}", method = RequestMethod.GET)
@@ -66,7 +69,6 @@ public class ClinicController {
         model.addAttribute("doctor", this.doctorService.getDoctorById(id));
         return "doctorinfo";
     }
-
 
     @RequestMapping(value = "/listdoctors", method = RequestMethod.GET)
     public String listDoctors(Model model) {
@@ -89,10 +91,12 @@ public class ClinicController {
         return "listshedules";
     }
 
+    //int doctor_id = 21;
     @RequestMapping(value = "/1", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    List<Shedule> getListShedule() {
-        return sheduleService.listShedules();
+    List<Shedule> getListShedule(@RequestParam("doctor_id") int doctor_id) {
+
+        return sheduleService.listShedule(doctor_id);
     }
 
     @RequestMapping(value = "/2", method = RequestMethod.POST, consumes = "application/json")
@@ -134,7 +138,7 @@ public class ClinicController {
 //        ModelAndView mav = new ModelAndView("admin");
 //        mav.addObject("shedule", shedule);
 //        return mav;
-//    }
+//
 
     @RequestMapping(value = "/admin/addShedule", method = RequestMethod.POST)
     public String addSheduleAtAdminPanel(@ModelAttribute("shedule") Shedule shedule) {

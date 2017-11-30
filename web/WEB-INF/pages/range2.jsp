@@ -16,19 +16,21 @@
     <link rel="stylesheet" href="../../resources/fc/fullcalendar.print.css" media="print">
 </head>
 <body>
-<div id="dialog-form" title="Событие">
-    <form:form id="formAddEvent" action="/admin/addShedule" method="post" modelAttribute="shedule">
-        <p><label for="text_dateStart">Дата начала</label>
-            <input id="text_dateStart" name="start" type="datetime-local">
-        <p><label for="text_dateEnd">Дата окончания</label>
-            <input id="text_dateEnd" name="end" type="datetime-local">
-        <td colspan="2">
-            <input type="submit"
-                   value="<spring:message text="Add Shedule"/>"/>
-        </td>
-        </table>
-    </form:form>
-</div>
+
+<h1>${choosedDoctorId}</h1>
+
+<%--<form:form id="formAddEvent1" action="/shedule" method="post" modelAttribute="chooseDoctorId">--%>
+    <%--<p><label for="doctor">Доктор:</label>--%>
+    <%--</p>--%>
+
+    <%--<form:select id="doctor_choose" path="doctor_id" items="${listDoctors}" itemLabel="surname" itemValue="doctor_id"/>--%>
+    <%--</p>--%>
+
+    <%--<td colspan="2">--%>
+        <%--<input type="submit" onclick="eventChooseDoctor()"--%>
+               <%--value="<spring:message text="Сменить доктора"/>" class="ui-button"/>--%>
+    <%--</td>--%>
+<%--</form:form>--%>
 
 <script src="../../resources/fc/lib/jquery.min.js"></script>
 <script src="../../resources/jquery-ui/jquery-ui.min.js"></script>

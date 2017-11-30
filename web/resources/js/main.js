@@ -1,4 +1,5 @@
 $(function () {
+    var doctor_id = document.getElementById("choosedDoctorId").innerHTML;
     $('#calendar').fullCalendar({
         locale: 'ru',
         themeSystem: 'jquery-ui',
@@ -32,6 +33,9 @@ $(function () {
 
         eventSources: [{
             url: '/1',
+            data: {
+                doctor_id: doctor_id
+            }
         }]
     });
 

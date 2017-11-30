@@ -33,6 +33,32 @@
 <script src="../../resources/fc/fullcalendar.js"></script>
 <script src="../../resources/fc/locale-all.js"></script>
 
+<h1 id="choosedDoctorId">${choosedDoctorOut.doctor_id}</h1>
+<h1 id="choosedDoctor">Фамилия доктора: ${choosedDoctorOut.surname}</h1>
+
+<form:form id="formAddEvent1" action="/shedule" method="post" modelAttribute="choosedDoctor">
+
+
+
+    <%--<form:select id="doctor_choose" path="doctor_id" items="${listDoctors}" itemLabel="surname" itemValue="doctor_id">--%>
+        <%--<form:option value="1111" label="--- Select Code ---" />--%>
+
+    <%--</form:select>--%>
+
+    <form:select multiple="single" path="doctor_id" >
+        <%--<form:option value="${choosedDoctorOut.doctor_id}" label=""/>--%>
+        <form:options items="${listDoctors}"  itemValue="doctor_id" itemLabel="surname" />
+    </form:select>
+
+
+
+    <td colspan="2">
+        <input type="submit"
+               value="<spring:message text="Сменить доктора"/>" class="ui-button"/>
+    </td>
+</form:form>
+
+
 <div id="calendar"></div>
 
 <div id="dialog-form" title="Событие">
@@ -112,13 +138,13 @@
         <input id="hide_dateEnd" name="end" type="hidden">
 
         <p><label for="doctor">Доктор:</label>
-        <form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname"
-                        itemValue="doctor_id"/></p>
+            <form:select id="doctor" path="doctor.doctor_id" items="${listDoctors}" itemLabel="surname"
+                         itemValue="doctor_id"/></p>
 
 
         <p><label for="patient">Пациент:</label>
-        <form:select id="patient" path="patient.patient_id" items="${listPatients}" itemLabel="surname"
-                        itemValue="patient_id"/>
+            <form:select id="patient" path="patient.patient_id" items="${listPatients}" itemLabel="surname"
+                         itemValue="patient_id"/>
         </p>
 
         <td colspan="2">
