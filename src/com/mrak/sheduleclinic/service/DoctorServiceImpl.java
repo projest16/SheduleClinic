@@ -33,6 +33,6 @@ public class DoctorServiceImpl implements DoctorService{
     @Override
     @Transactional
     public void removeDoctor(Doctor doctor) {
-        this.doctorDao.addDoctor(doctor);
+        this.doctorDao.removeDoctor(doctor);
     }
 }

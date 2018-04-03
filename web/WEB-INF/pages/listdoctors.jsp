@@ -72,7 +72,7 @@
 
 
 <h1>Add a Doctor</h1>
-<c:url var="addAction" value="/listdoctors/add"/>
+<c:url var="addAction" value="/listdoctors/addDoctor"/>
 
 <form:form action="${addAction}" commandName="doctor">
     <table>

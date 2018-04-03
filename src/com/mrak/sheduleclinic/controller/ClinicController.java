@@ -25,7 +25,6 @@ public class ClinicController {
     }
 
     @Autowired(required = true)
-    //@Qualifier(value = "doctorService")
     public void setDoctorService(DoctorService doctorService) {
         this.doctorService = doctorService;
     }
@@ -40,6 +39,11 @@ public class ClinicController {
         return "redirect:/shedule";
     }
 
+    @RequestMapping(value = "/test1")
+    public String test1(Model model) {
+        return "shedule";
+    }
+
     @RequestMapping(value = "/shedule")
     public String test2(@ModelAttribute("choosedDoctor") Doctor doctor, Model model) {
         model.addAttribute("listDoctors", this.doctorService.listDoctors());
@@ -49,32 +53,7 @@ public class ClinicController {
         model.addAttribute("choosedDoctorOut", this.doctorService.getDoctorById(doctor.getDoctor_id()));
 
         //model.addAttribute("events1", sheduleService.listShedules());
-        return "calendar";
-    }
-
-    @RequestMapping(value = "/range1")
-    public String range1(Model model) {
-
-        return "range1";
-    }
-
-    @RequestMapping(value = "/range2")
-    public String range2(Model model) {
-
-        return "range2";
-    }
-
-    @RequestMapping(value = "/doctorinfo/{id}", method = RequestMethod.GET)
-    public String doctorinfo(@PathVariable("id") int id, Model model) {
-        model.addAttribute("doctor", this.doctorService.getDoctorById(id));
-        return "doctorinfo";
-    }
-
-    @RequestMapping(value = "/listdoctors", method = RequestMethod.GET)
-    public String listDoctors(Model model) {
-        model.addAttribute("doctor", new Doctor());
-        model.addAttribute("listDoctors", this.doctorService.listDoctors());
-        return "listdoctors";
+        return "shedule";
     }
 
     @RequestMapping(value = "/listpatients", method = RequestMethod.GET)
@@ -91,11 +70,9 @@ public class ClinicController {
         return "listshedules";
     }
 
-    //int doctor_id = 21;
     @RequestMapping(value = "/1", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     List<Shedule> getListShedule(@RequestParam("doctor_id") int doctor_id) {
-
         return sheduleService.listShedule(doctor_id);
     }
 
@@ -144,14 +121,14 @@ public class ClinicController {
     public String addSheduleAtAdminPanel(@ModelAttribute("shedule") Shedule shedule) {
         //shedule.setTitle(shedule.getPatient().getSurname());
         this.sheduleService.addShedule(shedule);
-        return "redirect:/calendar";
+        return "redirect:/shedule";
     }
 
     @RequestMapping(value = "/admin/deleteShedule", method = RequestMethod.POST)
     public String deleteSheduleAtAdminPanel(@RequestParam("sheduleID") int sheduleId) {
         //shedule.setTitle(shedule.getPatient().getSurname());
         this.sheduleService.deleteSheduleById(sheduleId);
-        return "redirect:/calendar";
+        return "redirect:/shedule";
     }
 
     @RequestMapping(value = "/admin/addDoctor", method = RequestMethod.POST)
