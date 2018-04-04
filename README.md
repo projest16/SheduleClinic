@@ -6,7 +6,7 @@
 - Вход по логину/паролю
 
 Используемые технологии:
-Spring (web-mvc, security, orm)
-Hibernate
-PostgreSQL
-JSP + JS + CSS
+- Spring (web-mvc, security, orm)
+- Hibernate
+- PostgreSQL
+- JSP + JS + CSS
